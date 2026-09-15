@@ -31,3 +31,138 @@ article {
     border-radius: 8px;
     margin-bottom: 20px;
 }
+
+body {
+    margin: 0 auto;
+    background-color: #faf8f5;
+    color: #333333;
+}
+
+nav {
+    margin-bottom: 20px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #0e2f4d;
+}
+
+.hero {
+    text-align: left;
+    padding: 20px 0 60px 0;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #0e2f4d;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.hero h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #1F1F1F;
+    line-height: 1.3;
+}
+
+.intro p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color:#555
+}
+
+.hero .quote {
+    font-style: italic;
+    color: #999;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #86c3c4;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s,transfrom 0.2s;
+    margin-top: 30px;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background-color: #0e2f4d;
+    transform: translateY(-2px);
+}
+
+.menu-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    position: relative;
+    z-index:100;
+}
+
+.menu-wrapper {
+    position: relative;
+    padding-bottom:15px;
+}
+
+.menu-btn{
+    cursor: default;
+    font-size: 24px;
+    font-weight: bold;
+    color:#84a3c3;
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+
+.menu-wrapper:hover .menu-btn {
+    transform: scale(1.1);
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    margin-top: -5px;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+    gap: 5px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.menu-wrapper:hover .dropdown {
+    opacity:1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown a {
+    text-decoration: none;
+    color: #0e2f4d;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size:15px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.dropdown a:hover {
+    background-color: #f0f0f0;
+    color: #0e2f4d;
+}
