@@ -32,7 +32,7 @@
     padding: 16px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    position:absolute;
+    position:relative;
 }
 
 .game-header {
@@ -141,15 +141,10 @@
     .tile-1024,.tile-2048 { font-size: 16px; }
 }
 
-.game-2048 {
-    color: #000000 !important;
+.game-2048, .game-header h1, .score-box, .score-box span, .hint {
+    color: #000000 !important; 
 }
-.game-header h1, .score-box, .score-box span {
-    color: #000000 !important;
-}
-.hint {
-    color: #222222 !important;
-}
-.tile-2, .tile-4, .tile-8 {
-    color: #000000 !important;
+.back-btn {
+    color: #82afd5 !important; 
+    border: 1px solid #8eb5d7 !important;
 }
