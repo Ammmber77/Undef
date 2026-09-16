@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>2048 </title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="game-2048">
+    <a href="../../game.html" class="back-button">返回游戏^-^</a>
+    
+    <div class="game-container">
+        <div class="game-header">
+            <h1>2048</h1>
+            <div class="score-box">
+                <span>score</span>
+                <span id="score">0</span>
+            </div>
+        </div>
+        <div id="game-over" class="game-over hodden">
+            <p>game over!</p>
+            <button id="restart-button">start</button>
+    </div>
+    <div class="grid" id="grid">
+        <p class="hint">电脑：W A S D</p>
+        <p class="hint">手机：有手即可</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
