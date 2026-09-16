@@ -88,7 +88,7 @@ function move(direction) {
     let moved = false;
 
     if (direction === 'right') {
-        matrix = matrix.map(row => row.reverse());
+        matrix = matrix.map(row => row.reverse())
     } else if (direction === 'up') {
         matrix = rotateMatrix(matrix);
     } else if (direction === 'down') {

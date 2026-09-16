@@ -142,13 +142,13 @@
 }
 
 .game-2048 {
-    color: #000000 !important; /* 纯黑 */
+    color: #000000 !important;
 }
 .game-header h1, .score-box, .score-box span {
     color: #000000 !important;
 }
 .hint {
-    color: #222222 !important; /* 深灰偏黑 */
+    color: #222222 !important;
 }
 .tile-2, .tile-4, .tile-8 {
     color: #000000 !important;
