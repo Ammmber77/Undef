@@ -1,4 +1,4 @@
-let board = [];
+Game();let board = [];
 let score = 0;
 let isGameOver = false;
 
@@ -144,30 +144,67 @@ document.addEventListener('keydown', (e) => {
         if (key === 'd') move('right');
     }
 });
-
 let touchStartX = 0, touchStartY = 0;
+let touchEndX = 0, touchEndY = 0;
+let isSwiping = false;
+
 document.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-    touchStartY = e.changedTouches[0].screenY;
-}, { passive: true });
+    touchStartX = e.touches[0].screenX;
+    touchStartY = e.touches[0].screenY;
+    touchEndX = touchStartX;
+    touchEndY = touchStartY;
+    isSwiping = true;
+}, { passive: false });
+
+// 监听 touchmove，及时阻止页面滚动
+document.addEventListener('touchmove', (e) => {
+    if (!isSwiping) return;
+    
+    touchEndX = e.touches[0].screenX;
+    touchEndY = e.touches[0].screenY;
+    
+    let diffX = Math.abs(touchEndX - touchStartX);
+    let diffY = Math.abs(touchEndY - touchStartY);
+    
+    // 只要滑动距离超过 10px，就认为是游戏操作，阻止页面滚动
+    if (diffX > 10 || diffY > 10) {
+        if (e.cancelable) {
+            e.preventDefault(); // 阻止浏览器下拉刷新
+        }
+    }
+}, { passive: false });
 
 document.addEventListener('touchend', (e) => {
-    let touchEndX = e.changedTouches[0].screenX;
-    let touchEndY = e.changedTouches[0].screenY;
-    handleSwipe(touchStartX, touchStartY, touchEndX, touchEndY);
-}, { passive: true });
+    if (!isSwiping) return;
+    isSwiping = false;
+    
+    // 用 changedTouches 获取最后离开屏幕的位置
+    let endX = e.changedTouches[0].screenX;
+    let endY = e.changedTouches[0].screenY;
+    
+    handleSwipe(touchStartX, touchStartY, endX, endY);
+}, { passive: false });
 
 function handleSwipe(startX, startY, endX, endY) {
     let diffX = endX - startX;
     let diffY = endY - startY;
+    
+    let minSwipeDistance = 15; 
+
     if (Math.abs(diffX) > Math.abs(diffY)) {
-        if (diffX > 30) move('right');
-        else if (diffX < -30) move('left');
+        if (Math.abs(diffX) > minSwipeDistance) {
+            if (diffX > 0) move('right');
+            else move('left');
+        }
     } else {
-        if (diffY > 30) move('down');
-        else if (diffY < -30) move('up');
+        if (Math.abs(diffY) > minSwipeDistance) {
+            if (diffY > 0) move('down');
+            else move('up');
+        }
     }
 }
+
+
 
 restartBtn.addEventListener('click', initGame);
 

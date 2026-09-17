@@ -181,3 +181,11 @@
     line-height: 1.4;
     margin-bottom: 3px; 
 }
+
+.game-2048 {
+    overscroll-behavior-y: contain; 
+}
+
+.game-container {
+    touch-action: none; 
+}
