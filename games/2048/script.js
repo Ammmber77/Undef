@@ -5,7 +5,7 @@ let isGameOver = false;
 const gridElement = document.getElementById('grid');
 const scoreElement = document.getElementById('score');
 const gameOverElement = document.getElementById('game-over');
-const restarBtn = document.getElementById('restart-btn');
+const restartBtn = document.getElementById('restart-btn');
 
 function initGame() {
     board = Array(16).fill(0);
@@ -13,31 +13,31 @@ function initGame() {
     isGameOver = false;
     gameOverElement.classList.add('hidden');
 
-    addRand0mTile();
-    addRandomtile();
+    addRandomTile();
+    addRandomTile();
     updateUI();
 }
 
 function addRandomTile() {
-    let emptyCells = []
+    let emptyCells = [];
     for (let i = 0; i < 16; i++) {
         if (board[i] === 0) emptyCells.push(i);
     }
     if (emptyCells.length === 0) return;
     
-    let randomTndex = emptyCells[Math.floor(Math.random()*emptyCells.length)];
-    board[randomIndex] = Math.random() < 0.9 ? 2 :4;
+    let randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    board[randomIndex] = Math.random() < 0.9 ? 2 : 4;
 }
 
 function updateUI() {
     gridElement.innerHTML = '';
     scoreElement.textContent = score;
 
-    for (let i = 0; i <16; i++) {
+    for (let i = 0; i < 16; i++) {
         let value = board[i];
         let tile = document.createElement('div');
-        tile.className = 'tile tile-${value}';
-        tile.texContent = value === 0 ? '' : value;
+        tile.className = `tile tile-${value}`; 
+        tile.textContent = value === 0 ? '' : value; 
         gridElement.appendChild(tile);
     }
 }
@@ -88,11 +88,11 @@ function move(direction) {
     let moved = false;
 
     if (direction === 'right') {
-        matrix = matrix.map(row => row.reverse())
+        matrix = matrix.map(row => row.reverse());
     } else if (direction === 'up') {
-        matrix = rotateMatrix(matrix);
+        matrix = rotateMatrix(rotateMatrix(rotateMatrix(matrix))); 
     } else if (direction === 'down') {
-        matrix = rotateMatrix(rotateMatrix(rotateMatrix(matrix)));
+        matrix = rotateMatrix(matrix); 
     }
 
     let newMatrix = [];
@@ -101,12 +101,13 @@ function move(direction) {
         if (matrix[i].join('') !== newRow.join('')) moved = true;
         newMatrix.push(newRow);
     }
+    
     if (direction === 'right') {
         newMatrix = newMatrix.map(row => row.reverse());
     } else if (direction === 'up') {
-        newMatrix = rotateMatrix(rotateMatrix(rotateMatrix(newMatrix)));
+        newMatrix = rotateMatrix(newMatrix); 
     } else if (direction === 'down') {
-        newMatrix = rotateMatrix(newMatrix);
+        newMatrix = rotateMatrix(rotateMatrix(rotateMatrix(newMatrix)));
     }
 
     if (moved) {
@@ -171,6 +172,3 @@ function handleSwipe(startX, startY, endX, endY) {
 restartBtn.addEventListener('click', initGame);
 
 initGame();
-
-
-
