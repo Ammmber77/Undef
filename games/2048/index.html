@@ -2,32 +2,36 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>2048 </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048</title>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="game-2048">
     <a href="../../game.html" class="back-btn">返回^-^</a>
-    
+
     <div class="game-container">
-        <div class="title-section">
-            <h1>2048</h1>
-            <div class="hint-box">
-                <span>W A S D or 有手就行</span>
+        <div class="game-header">
+            <div class="title-section">
+                <h1>2048</h1>
+                <div class="hint-box">
+                    <span>W A S D or 有手就行</span>
+                </div>
             </div>
-        </div>
             <div class="score-box">
                 <span>score</span>
                 <span id="score">0</span>
             </div>
         </div>
-        <div id="game-over" class="game-over hodden">
+
+        <div id="game-over" class="game-over hidden">
             <p>game over!</p>
             <button id="restart-btn">restart</button>
         </div>
+
         <div class="grid" id="grid"></div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

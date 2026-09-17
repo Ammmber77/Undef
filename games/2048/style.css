@@ -8,6 +8,7 @@
     align-items: center;
     min-height: 100vh;
     color: #1a1a1a;
+    overscroll-behavior-y: contain; 
 }
 
 .back-btn {
@@ -21,171 +22,56 @@
     border: 1px solid #84a3c3;
     transition: all 0.2s;
 }
-
-.back-btn:hover {
-    background-color: #84a3c3;
-    color: #fff;
-}
+.back-btn:hover { background-color: #84a3c3; color: #fff; }
 
 .game-container {
     background: #e8e8e0;
     padding: 16px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    position:relative;
+    position: relative;
+    touch-action: none; 
 }
 
-.game-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-}
+.game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.title-section { display: flex; align-items: flex-end; gap: 12px; }
+.hint-box { display: flex; flex-direction: column; font-size: 12px; color: #000000; line-height: 1.4; margin-bottom: 3px; }
 
-.game-header h1 {
-    font-size: 28px;
-    margin: 0;
-    color: #0e2f4d;
-}
+.game-header h1 { font-size: 28px; margin: 0; color: #0e2f4d; }
+.score-box { background: #d3d3c5; color: #020202; padding: 8px 16px; border-radius: 8px; text-align: center; font-weight: bold; display: flex; flex-direction: column; }
+.score-box span:first-child { font-size: 12px; color: #232121; }
 
-.score-box {
-    background: #d3d3c5;
-    color: #020202;
-    padding: 8px 16px;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-}
+.grid { display: grid; grid-template-columns: repeat(4, 80px); grid-template-rows: repeat(4, 80px); gap: 12px; background: #e8e8e0; border-radius: 8px; }
 
-.score-box span:first-child {
-    font-size: 12px;
-    color: #232121;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(4, 80px);
-    grid-template-rows: repeat(4, 80px);
-    gap: 12px;
-    background: #e8e8e0;
-    border-radius: 8px;
-}
-
-.tile {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    font-weight: bold;
-    transition: all 0.15s ease;
-}
-
+.tile { width: 80px; height: 80px; border-radius: 8px; display: flex; justify-content: center; align-items: center; font-size: 28px; font-weight: bold; transition: all 0.15s ease; }
 .tile-0 { background: #d3d3c5; }
-
 .tile-2 { background: #ffffff; color: #000000; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
-.tile-4 { background: #e0e0e0; color: #000000;}
-
+.tile-4 { background: #e0e0e0; color: #000000; }
 .tile-8 { background: #b6daf7; color: #1a1a1a; }
 .tile-16 { background: #8bc1ee; color: #fff; }
 .tile-32 { background: #8ba3b6; color: #fff; }
-.tile-64 { background: #2196f3; color: #fff; }
+.tile-64 { background: #3a84c0; color: #c7c2c2; }
 .tile-128 { background: #70c6db; color: #fff; font-size: 24px; }
-.tile-256 { background: #4f768f; color: #fff; font-size: 24px; }
+.tile-256 { background: #4f768f; color: #c6ced4; font-size: 24px; }
 .tile-512 { background: #012659; color: #fff; font-size: 24px; }
-.tile-1024 { background: #044352; color: #fff; font-size: 20px; }
+.tile-1024 { background: #044352; color: #bfc3c8; font-size: 20px; }
 .tile-2048 { background: #282929; color: #fff; font-size: 20px; box-shadow:0 0 15px #2992aa; }
 
-.game-over {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(245,245,240,0.9);
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-    z-index: 10;
-}
+.game-over { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(245,245,240,0.9); display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 12px; z-index: 10; }
 .game-over.hidden { display: none; }
 .game-over p { font-size: 24px; font-weight: bold; color:#000000; margin-bottom: 20px;}
-.game-over button {
-    padding: 10px 24px;
-    background: #5f87a9;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-}
+.game-over button { padding: 10px 24px; background: #5f87a9; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
 
-.hint {
-   color: #090909;
-   font-size: 13px;
-   margin-top: 12px; 
-   text-align: center;
-}
+.hint { color: #090909; font-size: 13px; margin-top: 12px; text-align: center; }
 
 @media (max-width:480px) {
-    .grid {
-        grid-template-columns: repeat(4, 65px);
-        grid-template-rows: repeat(4, 65px);
-        gap: 8px;
-    }
+    .grid { grid-template-columns: repeat(4, 65px); grid-template-rows: repeat(4, 65px); gap: 8px; }
     .tile { width: 65px; height: 65px; font-size: 22px;}
     .tile-128,.tile-256,.tile-512 { font-size: 18px;}
     .tile-1024,.tile-2048 { font-size: 16px; }
-}
-
-.game-2048, 
-.game-2048 .game-header h1, 
-.game-2048 .score-box, 
-.game-2048 .score-box span, 
-.game-2048 .hint,
-.game-2048 .tile-2,
-.game-2048 .tile-4,
-.game-2048 .tile-8 {
+.game-2048, .game-2048 .game-header h1, .game-2048 .score-box, .game-2048 .score-box span, .game-2048 .hint, .game-2048 .tile-2, .game-2048 .tile-4, .game-2048 .tile-8 {
     color: #000000 !important; 
 }
-
-.game-2048 .back-btn {
-    color: #9fc3e3 !important;
-    border: 1px solid #89b1d4 !important;
-}
-
-.game-over #restart-btn {
-    background: #8cabc5 !important;
-    color: #ffffff !important;
-    font-weight: bold !important;
-    padding: 10px 24px !important;
-    border: none !important;
-    border-radius: 8px !important;
-    cursor: pointer !important;
-}
-
-.title-section {
-    display: flex;
-    align-items: flex-end; 
-    gap: 16px;             
-}
-
-.hint-box {
-    display: flex;
-    flex-direction: column;
-    font-size: 12px;
-    color: #555 !important; 
-    line-height: 1.4;
-    margin-bottom: 3px; 
-}
-
-.game-2048 {
-    overscroll-behavior-y: contain; 
-}
-
-.game-container {
-    touch-action: none; 
+.game-2048 .back-btn { color: #81bdf2 !important; border: 1px solid #7bb5e7 !important; }
+.game-over #restart-btn { background: #275278 !important; color: #ffffff !important; font-weight: bold !important; }
 }

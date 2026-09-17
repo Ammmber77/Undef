@@ -1,4 +1,4 @@
-Game();let board = [];
+let board = [];
 let score = 0;
 let isGameOver = false;
 
@@ -90,9 +90,11 @@ function move(direction) {
     if (direction === 'right') {
         matrix = matrix.map(row => row.reverse());
     } else if (direction === 'up') {
-        matrix = rotateMatrix(rotateMatrix(rotateMatrix(matrix))); 
+        // W 键（向上）
+        matrix = rotateMatrix(rotateMatrix(rotateMatrix(matrix)));
     } else if (direction === 'down') {
-        matrix = rotateMatrix(matrix); 
+        // S 键（向下）
+        matrix = rotateMatrix(matrix);
     }
 
     let newMatrix = [];
@@ -144,6 +146,7 @@ document.addEventListener('keydown', (e) => {
         if (key === 'd') move('right');
     }
 });
+
 let touchStartX = 0, touchStartY = 0;
 let touchEndX = 0, touchEndY = 0;
 let isSwiping = false;
@@ -156,7 +159,6 @@ document.addEventListener('touchstart', (e) => {
     isSwiping = true;
 }, { passive: false });
 
-// 监听 touchmove，及时阻止页面滚动
 document.addEventListener('touchmove', (e) => {
     if (!isSwiping) return;
     
@@ -166,10 +168,9 @@ document.addEventListener('touchmove', (e) => {
     let diffX = Math.abs(touchEndX - touchStartX);
     let diffY = Math.abs(touchEndY - touchStartY);
     
-    // 只要滑动距离超过 10px，就认为是游戏操作，阻止页面滚动
     if (diffX > 10 || diffY > 10) {
         if (e.cancelable) {
-            e.preventDefault(); // 阻止浏览器下拉刷新
+            e.preventDefault(); 
         }
     }
 }, { passive: false });
@@ -178,7 +179,6 @@ document.addEventListener('touchend', (e) => {
     if (!isSwiping) return;
     isSwiping = false;
     
-    // 用 changedTouches 获取最后离开屏幕的位置
     let endX = e.changedTouches[0].screenX;
     let endY = e.changedTouches[0].screenY;
     
@@ -203,8 +203,6 @@ function handleSwipe(startX, startY, endX, endY) {
         }
     }
 }
-
-
 
 restartBtn.addEventListener('click', initGame);
 
