@@ -237,3 +237,8 @@ nav a:hover {
     color: #000000;
     font-size: 14px;
 }
+
+#article-content p {
+    margin-bottom: 1.2em;
+    line-height: 1.8;
+}
