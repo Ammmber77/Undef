@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 backend:
   name: git-gateway 
   branch: main 
@@ -15,4 +16,23 @@ collections:
       - { label: "标题", name: "title", widget: "string" }
       - { label: "发布日期", name: "date", widget: "datetime" }
       - { label: "正文", name: "body", widget: "markdown" }
+=======
+backend:
+  name: git-gateway 
+  branch: main 
+
+media_folder: "images/uploads" 
+public_folder: "/images/uploads" 
+
+collections:
+  - name: "posts" 
+    label: "文字" 
+    folder: "posts" 
+    create: true 
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" 
+    fields: 
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "date", widget: "datetime" }
+      - { label: "正文", name: "body", widget: "markdown" }
+>>>>>>> 2ec2d865cbbbdbaf4dba997d9bdfa67d68584abf
       - { label: "封面图片", name: "thumbnail", widget: "image", required: false }
